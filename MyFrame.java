@@ -13,6 +13,7 @@ public class MyFrame extends JFrame{
    GraphicsClass graphic = new GraphicsClass();
    
    public MyFrame(){
+       // 16px and 39px are .swing margins
        this.setSize(Hex.getXMax() + 16, Hex.getYMax() + 39);
        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
        this.add(graphic);

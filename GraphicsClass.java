@@ -7,7 +7,14 @@
  */
 import javax.swing.*;
 import java.awt.*;
-public class GraphicsClass extends JPanel{
+import java.awt.event.*;
+
+public class GraphicsClass extends JPanel implements ActionListener{
+    
+    @Override
+    public void actionPerformed(ActionEvent e){
+        //TODO   animating stuff (Bro Code vid 4:12)
+    }
 
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
