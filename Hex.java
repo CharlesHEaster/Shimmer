@@ -29,10 +29,9 @@ public class Hex
     public static int decernHex(int ex, int why){        //this logic path is just sloppy.  im sorry
         int x = ex;
         int y = why;
-        // Alright look, i don't fully know how to do this.  I think Im dabbleing in polymorphism here
-        // the way it is now, every standard hex will generate 2 standard hex objects, one of which falls away.
-        // i don't know.  I can't make it return pass because in the main class it is hex = hex.decernHex().
-        // so that would make the standard hex equal pass.  imma leave it for now...
+        // Alright look, i don't love the way this works, but it works.  First we chuck the x and y into decernHex() and that
+        //returns an int which corresponds to which kinda hex is created.  I am sure there is a more concise way to do this,
+        //maybe that is what casting is for, I'll have to look into it.  For now, it works and I don't want to fuck with it.
 
         // 0 = standard
         // 1 = vert
@@ -305,4 +304,39 @@ public class Hex
         }
 
     }
+
+    public static void disperseShim(Hex[][] arr, int jay, int eye) {
+        int j = jay;
+        int i = eye;
+        int jmod = arr.length;
+        int imod = arr[0].length;
+        int[] jarr = new int[6];
+        int[] iarr = new int[6];
+        //Up Left
+        jarr[0] = (j - 1) % jmod;
+        iarr[0] = i;
+        //Up
+        jarr[1] = (j - 2) % jmod;
+        iarr[1] = (i + 1) % imod;
+        // Up Right
+        jarr[1] = (j - 1) % jmod;
+        iarr[1] = (i + 1) % imod;
+        // Down Right
+        jarr[1] = (j + 1) % jmod;
+        iarr[1] = i;
+        // Down
+        jarr[1] = (j + 2) % jmod;
+        iarr[1] = (i - 1) % imod;
+        // Down Left
+        jarr[1] = (j + 1) % jmod;
+        iarr[1] = (i - 1) % imod;
+
+        arr[jarr[0]][iarr[0]].giveShim();
+        arr[jarr[1]][iarr[1]].giveShim();
+        arr[jarr[2]][iarr[2]].giveShim();
+        arr[jarr[3]][iarr[3]].giveShim();
+        arr[jarr[4]][iarr[4]].giveShim();
+        arr[jarr[5]][iarr[5]].giveShim();
+    }
+
 }
