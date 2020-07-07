@@ -7,6 +7,7 @@
  */
 
 import java.awt.*;
+import javax.swing.*;
 
 public class Hex
 {
@@ -21,7 +22,7 @@ public class Hex
     private static int OnTime; // how long they stay on shimmer
     private static int PassOn; // the count of the timer when they try to pass on the shimmer
     private static int RowOffset, ColOffset; //row and col offsets are determined by height and fractions of width
-
+    private static Graphics G;
     // count starts at 0.  when shim is passed count jumps to delay + ontime.  count ticks down.
     // when count < delay shim turns off.
     // when count is 0 it can recieve shim again
@@ -185,11 +186,12 @@ public class Hex
     }
 
     public static void setPassOn(int pa){
-        PassOn = pa;  
+        Hex.PassOn = pa;
+        Hex.PassOn = (Hex.getOnTime() + Hex.getDelay()) - Hex.PassOn;
     }
 
     public static void setPassOn(String str){
-        PassOn = Integer.parseInt(str);
+        setPassOn(Integer.parseInt(str));
     }
 
     public static int getXMax(){
@@ -294,7 +296,16 @@ public class Hex
         return arr;
     }
 
-    public void draw(Graphics g){
+    public static void setG(Graphics g) {
+        Hex.G = g;
+    }
+    
+    public static Graphics getG(){
+        return Hex.G;
+    }
+    
+    public void draw(){
+        Graphics g = Hex.getG();
         int[] x = this.getPointsX();
         int[] y = this.getPointsY();
         if (this.getShim()) {
