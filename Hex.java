@@ -8,6 +8,7 @@
 
 import java.awt.*;
 import javax.swing.*;
+import java.util.Arrays;
 
 public class Hex
 {
@@ -324,23 +325,32 @@ public class Hex
         int[] jarr = new int[6];
         int[] iarr = new int[6];
         //Up Left
-        jarr[0] = (j - 1) % jmod;
+        jarr[0] = j - 1;
         iarr[0] = i;
         //Up
-        jarr[1] = (j - 2) % jmod;
-        iarr[1] = (i + 1) % imod;
+        jarr[1] = j - 2;
+        iarr[1] = i + 1;
         // Up Right
-        jarr[1] = (j - 1) % jmod;
-        iarr[1] = (i + 1) % imod;
+        jarr[2] = j - 1;
+        iarr[2] = i + 1;
         // Down Right
-        jarr[1] = (j + 1) % jmod;
-        iarr[1] = i;
+        jarr[3] = j + 1;
+        iarr[3] = i;
         // Down
-        jarr[1] = (j + 2) % jmod;
-        iarr[1] = (i - 1) % imod;
+        jarr[4] = j + 2;
+        iarr[4] = i - 1;
         // Down Left
-        jarr[1] = (j + 1) % jmod;
-        iarr[1] = (i - 1) % imod;
+        jarr[5] = j + 1;
+        iarr[5] = i - 1;
+
+        for (int p = 0; p < 6; p++){
+            jarr[p] = jarr[p] < 0 ? jarr[p] + jmod: jarr[p];
+            jarr[p] = jarr[p] >= jmod ? jarr[p] - jmod: jarr[p];
+        }
+        for (int p = 0; p < 6; p++){
+            iarr[p] = iarr[p] < 0 ? iarr[p] + imod: iarr[p];
+            iarr[p] = iarr[p] >= imod ? iarr[p] - imod: iarr[p];
+        }
 
         arr[jarr[0]][iarr[0]].giveShim();
         arr[jarr[1]][iarr[1]].giveShim();

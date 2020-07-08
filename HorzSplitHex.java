@@ -46,7 +46,8 @@ public class HorzSplitHex extends Hex
     }
 
     @Override
-    public void draw(Graphics g){
+    public void draw(){
+        Graphics g = Hex.getG();
         int[] x = this.getPointsX();
         int[] y = this.getPointsY();
         int[] x1 = Arrays.copyOfRange(x, 0, 4);
