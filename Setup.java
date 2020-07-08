@@ -11,24 +11,14 @@ public class Setup
     public static Hex[][] Grid;
     public static void main(){
         //Ask for all the variables
-        // Hex.setSize(JOptionPane.showInputDialog("What size do you want the hexs?"));
-        // Hex.setXMax(JOptionPane.showInputDialog("Width of grid?"));
-        // Hex.setYMax(JOptionPane.showInputDialog("Height of grid?"));
-        // Hex.setLikely(JOptionPane.showInputDialog("How likely one hex is to see it's neighbor's shimmer \n(X out of 1000, higher number more likely)"));
-        // Hex.setOften(JOptionPane.showInputDialog("How often will an idle hex is to start a shimmer.\n(X out of 1000, higher number more often)"));
-        // Hex.setDelay(JOptionPane.showInputDialog("How long a hex will not shimmer after it has shimmered."));
-        // Hex.setOnTime(JOptionPane.showInputDialog("How long a hex will stay on once it's shimmered."));
-        // Hex.setPassOn(JOptionPane.showInputDialog("How long a hex will wait until it passes it's shimmer"));
-
-        Hex.setSize("10");
-        Hex.setXMax("1000");
-        Hex.setYMax("800");
-        Hex.setLikely("700");
-        Hex.setOften("0");
-        Hex.setDelay("10");
-        Hex.setOnTime("5");
-        Hex.setPassOn("2");
-        
+        Hex.setSize(JOptionPane.showInputDialog("What size do you want the hexs?\nTry 10"));
+        Hex.setXMax(JOptionPane.showInputDialog("Width of grid?\nTry 1000"));
+        Hex.setYMax(JOptionPane.showInputDialog("Height of grid?\nTry 800"));
+        Hex.setLikely(JOptionPane.showInputDialog("How likely one hex is to see it's neighbor's shimmer \n(X out of 1000, higher number more likely)\nTry 800"));
+        Hex.setOften(JOptionPane.showInputDialog("How often will an idle hex start a shimmer.\n(X out of 1,000,000, higher number more often)\nTry 10"));
+        Hex.setDelay(JOptionPane.showInputDialog("How long a hex will not shimmer after it has shimmered.\nTry 90"));
+        Hex.setOnTime(JOptionPane.showInputDialog("How long a hex will stay on once it's shimmered.\nTry 10"));
+        Hex.setPassOn(JOptionPane.showInputDialog("How long a hex will wait until it passes it's shimmer\nTry 3"));
 
         //build grid
         Grid = new Hex[Hex.getNumRows()][Hex.getRowLength()];

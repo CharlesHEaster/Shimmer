@@ -11,9 +11,10 @@ import java.util.Arrays;
 public class test
 {
     public static void main(){
-        int Size = 500;
-        Size = Size == 5 ? 6: Size;
-        System.out.println(Size);
+        for (int i=0; i < 1000; i++){
+            System.out.println((int)(Math.random() * 1000));
+            
+        }
         
         
     }

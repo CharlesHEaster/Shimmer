@@ -27,10 +27,10 @@ public class GraphicsClass extends JPanel implements ActionListener{
             for (int i = 0; i < Hex.getRowLength(); i++) {
                 if (Setup.Grid[j][i].getCount() == Hex.getPassOn()) {
                     Hex.disperseShim(Setup.Grid, j, i);
-                // } else if (Setup.Grid[j][i].getCount() == 0) { 
-                    // if (Hex.getOften()) {
-                        // Setup.Grid[j][i].giveShim();
-                    // }
+                } else if (Setup.Grid[j][i].getCount() == 0) { 
+                    if (Hex.getOften()) {
+                        Setup.Grid[j][i].giveShim();
+                    }
                 }
             }
         }

@@ -114,7 +114,7 @@ public class Hex
     }
 
     public void giveShim(){
-        if (this.getCount() == 0) {
+        if (this.getCount() == 0 && Hex.getLikely()) {
             this.setCount(Hex.getOnTime() + Hex.getDelay());
         }
     }
@@ -208,7 +208,7 @@ public class Hex
     }
 
     public static boolean getLikely(){
-        int random = (int)(Math.random() * 1000 + 1);
+        int random = (int)((Math.random() * 1000) + 1);
         return random < Likely;  
     }
 
@@ -217,7 +217,7 @@ public class Hex
     }
 
     public static boolean getOften(){
-        int random = (int)(Math.random() * 1000 + 1);
+        int random = (int)(Math.random() * 1000000 + 1);
         return random < Often;  
     }
 
