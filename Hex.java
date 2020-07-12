@@ -311,7 +311,7 @@ public class Hex
         int[] y = this.getPointsY();
         if (this.getShim()) {
             g.fillPolygon(x, y, 6);
-        } else {
+        } else if (Setup.getGridOn()){
             g.drawPolygon(x, y, 6);
         }
 

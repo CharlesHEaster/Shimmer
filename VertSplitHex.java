@@ -57,7 +57,7 @@ public class VertSplitHex extends Hex
         if (this.getShim()) {
             g.fillPolygon(x1, y1, 5);
             g.fillPolygon(x2, y2, 3);
-        } else {
+        } else if (Setup.getGridOn()){
             g.drawPolygon(x1, y1, 5);
             g.drawPolygon(x2, y2, 3);
         }

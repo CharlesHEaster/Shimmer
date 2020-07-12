@@ -100,7 +100,7 @@ public class WilliamWallace extends Hex
             g.fillPolygon(x2, y2, 4);
             g.fillPolygon(x3, y3, 3);
             g.fillPolygon(x4, y4, 3);
-        } else {
+        } else if (Setup.getGridOn()){
             g.drawPolygon(x1, y1, 4);
             g.drawPolygon(x2, y2, 4);
             g.drawPolygon(x3, y3, 3);

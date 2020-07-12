@@ -57,7 +57,7 @@ public class HorzSplitHex extends Hex
         if (this.getShim()) {
             g.fillPolygon(x1, y1, 4);
             g.fillPolygon(x2, y2, 4);
-        } else {
+        } else if (Setup.getGridOn()){
             g.drawPolygon(x1, y1, 4);
             g.drawPolygon(x2, y2, 4);
         }

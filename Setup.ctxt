@@ -1,5 +1,15 @@
 #BlueJ class context
 comment0.target=Setup
-comment1.params=
-comment1.target=void\ main()
-numComments=2
+comment1.params=grid
+comment1.target=void\ setGridOn(boolean)
+comment2.params=grid
+comment2.target=void\ setGridOn(int)
+comment3.params=
+comment3.target=boolean\ getGridOn()
+comment4.params=
+comment4.target=void\ main()
+comment5.params=
+comment5.target=int\ getScreenWidth()
+comment6.params=
+comment6.target=int\ getScreenHeight()
+numComments=7
