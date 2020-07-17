@@ -1,7 +1,7 @@
 #BlueJ class context
 comment0.target=Hex
 comment1.params=ex\ why
-comment1.target=int\ decernHex(int,\ int)
+comment1.target=Hex\ decernHex(int,\ int)
 comment10.params=
 comment10.target=int\ getCount()
 comment11.params=c

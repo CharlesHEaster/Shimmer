@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.target=NormHex
+comment1.params=ex\ why
+comment1.target=NormHex(int,\ int)
+comment2.params=
+comment2.target=int[]\ getPointsX()
+comment3.params=
+comment3.target=int[]\ getPointsY()
+comment4.params=
+comment4.target=void\ draw()
+numComments=5

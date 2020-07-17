@@ -62,30 +62,9 @@ public class Setup
                 int x = (j * Hex.getColOffset()) + (i * (Hex.getWidth() + Hex.getSize()));
                 x = x % Hex.getXMax();
                 int y = (j + 1) * Hex.getRowOffset();
-                //System.out.print("Grid[" + j + "][" + i + "] ");
-                int type = Hex.decernHex(x, y);
-                if (type == 0){
-                    Grid[j][i] = new Hex(x, y);
-                    //    System.out.println("Hex");
-                } else if (type == 1){
-                    Grid[j][i] = new VertSplitHex(x, y);
-                    //    System.out.println("Vert");
-                } else if (type == 2){
-                    Grid[j][i] = new WilliamWallace(x, y);
-                    //    System.out.println("WW");
-                } else if (type == 3){
-                    Grid[j][i] = new HorzSplitHex(x, y);
-                    //    System.out.println("Horz");
-                } else {
-                    System.out.println("Grid[" + j + "][" + i + "] x:" + x + " y:" + y + " YMax:" + Hex.getYMax()); 
-                }
-
-                if (type != 4){
-
-                    //System.out.println("Grid[" + j + "][" + i + "]: " + Grid[j][i].toString()); 
-                }
+                Grid[j][i] = Hex.decernHex(x, y);
             }
-            //System.out.println("-----------------------------------------------"); 
+            
         }
         Setup.Grid[Hex.getNumRows() / 2][Hex.getRowLength() / 2].giveShim();
     }

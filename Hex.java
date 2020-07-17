@@ -10,7 +10,7 @@ import java.awt.*;
 import javax.swing.*;
 import java.util.Arrays;
 
-public class Hex
+abstract public class Hex
 {
     private int Count;
     private int x;
@@ -24,37 +24,29 @@ public class Hex
     private static int PassOn; // the count of the timer when they try to pass on the shimmer
     private static int RowOffset, ColOffset; //row and col offsets are determined by height and fractions of width
     private static Graphics G;
-    // count starts at 0.  when shim is passed count jumps to delay + ontime.  count ticks down.
+    // count starts at 0.  when shim is passed count jumps to delay + ontime.  then count ticks down every frame.
     // when count < delay shim turns off.
     // when count is 0 it can recieve shim again
 
-    public static int decernHex(int ex, int why){        //this logic path is just sloppy.  im sorry
+    public static Hex decernHex(int ex, int why){        //this logic path is just sloppy.  im sorry
         int x = ex;
         int y = why;
-        // Alright look, i don't love the way this works, but it works.  First we chuck the x and y into decernHex() and that
-        //returns an int which corresponds to which kinda hex is created.  I am sure there is a more concise way to do this,
-        //maybe that is what casting is for, I'll have to look into it.  For now, it works and I don't want to fuck with it.
-
-        // 0 = standard
-        // 1 = vert
-        // 2 = wwallace
-        // 3 = horz
-        // 4 = wtf
-        //System.out.print(x + " " + y + " ");
+        //if the full hex is on the screen horzontally AND Vertically = normal hex 
         if (x <= Hex.getXMax() - Hex.getWidth() && y < Hex.getYMax()) {
-            return 0;
+            return new NormHex(x, y);
+        // else if X is towards the rigth edge of the screen...
         } else if ( x > Hex.getXMax() - Hex.getWidth()) {
+            //if Y is NOT on the bottom edge = VertSplitHex
             if (y < Hex.getYMax() - (Hex.getHeight() / 2)) {
-                return 1;
+                return new VertSplitHex(x, y);
+            // else it must be VertSplit AND HorzSplit = William Wallace
             } else {
-                return 2;
+                return new WilliamWallace(x, y);
             }
-        } else if (y == Hex.getYMax()) {
-            return 3;
+        //Process of elimation...  HorzSplit
         } else {
-            System.out.print("SLIP! ");
-            return 4;
-        }
+            return new HorzSplitHex(x, y);
+        } 
 
     }
 
@@ -275,27 +267,9 @@ public class Hex
 
     }
 
-    public int[] getPointsX(){
-        int A = this.getX();
-        int B = A + (Hex.getSize() / 2);
-        int C = B + Hex.getSize();
-        int D = A + Hex.getWidth();
-        int E = C;
-        int F = B;
-        int[] arr = {A, B, C, D, E, F};
-        return arr;
-    }
+    abstract public int[] getPointsX();
 
-    public int[] getPointsY(){
-        int A = this.getY();
-        int B = A - (Hex.getHeight() / 2);
-        int C = B;
-        int D = A;
-        int E = A + (Hex.getHeight() / 2);
-        int F = E;
-        int[] arr = {A, B, C, D, E, F};
-        return arr;
-    }
+    abstract public int[] getPointsY();
 
     public static void setG(Graphics g) {
         Hex.G = g;
@@ -305,17 +279,7 @@ public class Hex
         return Hex.G;
     }
     
-    public void draw(){
-        Graphics g = Hex.getG();
-        int[] x = this.getPointsX();
-        int[] y = this.getPointsY();
-        if (this.getShim()) {
-            g.fillPolygon(x, y, 6);
-        } else if (Setup.getGridOn()){
-            g.drawPolygon(x, y, 6);
-        }
-
-    }
+    abstract public void draw();
 
     public static void disperseShim(Hex[][] arr, int jay, int eye) {
         int j = jay;
