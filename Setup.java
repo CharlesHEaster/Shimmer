@@ -42,7 +42,7 @@ public class Setup
             Hex.setDelay(90);
             Hex.setOnTime(10);
             Hex.setPassOn(3);
-            
+
         } else {
             Setup.askGridOn();
             Setup.askSize();
@@ -92,40 +92,40 @@ public class Setup
     }
 
     public static void askSize(){
-        Hex.setSize(JOptionPane.showInputDialog("What size do you want the hexs?\n(Demo used 10)"));
+        Hex.setSize(JOptionPane.showInputDialog("What size do you want the hexs?", "10"));
     }
 
     public static void askXMax(){
         int width = Setup.getScreenWidth() - 100;
-        Hex.setXMax(JOptionPane.showInputDialog("What width would you like the grid, in pixels?\n(Demo used " + width + ")"));
+        Hex.setXMax(JOptionPane.showInputDialog("What width would you like the grid, in pixels?", width));
     }
 
     public static void askYMax(){
         int height = Setup.getScreenHeight() - 100;
-        Hex.setYMax(JOptionPane.showInputDialog("What height would you like the grid, in pixels?\n(Demo used " + height + ")"));
+        Hex.setYMax(JOptionPane.showInputDialog("What height would you like the grid, in pixels?", height));
     }
 
     public static void askLikely(){
-        Hex.setLikely(JOptionPane.showInputDialog("How likely one hex is to see it's neighbor's shimmer \n(X out of 1000, higher number more likely)\n(Demo used 800)"));
+        Hex.setLikely(JOptionPane.showInputDialog("How likely one hex is to see it's neighbor's shimmer \n(X out of 1000, higher number more likely)", "800"));
     }
 
     public static void askOften(){
-        Hex.setOften(JOptionPane.showInputDialog("How often will an idle hex start a shimmer.\n(X out of 1,000,000, higher number more often)\n(Demo used 10)"));
+        Hex.setOften(JOptionPane.showInputDialog("How often will an idle hex start a shimmer.\n(X out of 1,000,000, higher number more often)", "10"));
     }
 
     public static void askDelay(){
-        Hex.setDelay(JOptionPane.showInputDialog("How long a hex will not shimmer after it has shimmered.\n(Demo used 90)"));
+        Hex.setDelay(JOptionPane.showInputDialog("How many frames a hex will not shimmer after it has shimmered.", "90"));
     }
 
     public static void askOnTime(){
-        Hex.setOnTime(JOptionPane.showInputDialog("How long a hex will stay on once it's shimmered.\n(Demo used 10)"));
+        Hex.setOnTime(JOptionPane.showInputDialog("How many frames a hex will stay on once it's shimmered.", "10"));
     }
 
     public static void askPassOn(){
-        Hex.setPassOn(JOptionPane.showInputDialog("How long a hex will wait until it passes it's shimmer\n(Demo used 3)"));
+        Hex.setPassOn(JOptionPane.showInputDialog("How many frames a hex will wait until it passes it's shimmer", "3"));
     }
-    
+
     public static void askT(){
-        GraphicsClass.setT(JOptionPane.showInputDialog("How long will each frame be on screen, in milliSeconds\n(Demo used 10)"));
+        GraphicsClass.setT(JOptionPane.showInputDialog("How long will each frame be on screen, in milliSeconds", "10"));
     }
 }
