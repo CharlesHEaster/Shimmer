@@ -10,19 +10,28 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class GraphicsClass extends JPanel implements ActionListener{
-    
-    Timer timer = new Timer(10, this);
-    int seconds = 0;
-    
-    public GraphicsClass(){
-        timer.start();
-        
+    public static int t = 1000;
+    Timer timer = new Timer(GraphicsClass.getT(), this);
+
+    public static void setT(int tee){
+        GraphicsClass.t = tee;
     }
-    
+
+    public static void setT(String str){
+        int tee = Integer.parseInt(str);
+        GraphicsClass.setT(tee);
+    }
+
+    public static int getT(){
+        return GraphicsClass.t;
+    }
+
+    public GraphicsClass(){
+        timer.start();    
+    }
 
     @Override
     public void actionPerformed(ActionEvent e){
-        //TODO   animating stuff (Bro Code vid 4:12)
         for (int j = 0; j < Hex.getNumRows(); j++) {
             for (int i = 0; i < Hex.getRowLength(); i++) {
                 if (Setup.Grid[j][i].getCount() == Hex.getPassOn()) {
@@ -41,10 +50,7 @@ public class GraphicsClass extends JPanel implements ActionListener{
                 Setup.Grid[j][i].decCount();
             }
         }
-        
-        // seconds++;
-        // System.out.println(seconds);
-        
+
     }
 
     public void paintComponent(Graphics g) {
