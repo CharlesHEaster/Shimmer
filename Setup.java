@@ -1,9 +1,9 @@
 
 /**
- * Write a description of class Setup here.
+ * Thanks /u/GioVoi for the advise
  *
  * @author (Charles Easter)
- * @version (DATE)
+ *
  */
 import javax.swing.JOptionPane;
 import java.awt.*;
@@ -11,52 +11,62 @@ import java.awt.*;
 public class Setup
 {
     public static Hex[][] Grid;
-    private static boolean gridOn;
+    private static boolean isGridOn;
 
     public static void setGridOn(boolean grid){
-        Setup.gridOn = grid;
+        Setup.isGridOn = grid;
     }
 
     public static void setGridOn(int grid){
-        Setup.gridOn = grid == 0 ? true: false;
+        Setup.isGridOn = grid == 0;
     }
 
     public static boolean getGridOn(){
-        return Setup.gridOn;
+        return Setup.isGridOn;
     }
 
     public static void main(){
         //Ask for all the variables
-        int $demo = JOptionPane.showConfirmDialog(null, "Would you like to see a demonstration?", 
+        int demo = JOptionPane.showConfirmDialog(null, "Would you like to see a demonstration?", 
                 "Demo?",JOptionPane.YES_NO_OPTION);
-        boolean demo = $demo == 0 ? true: false;
+        boolean isDemo = demo == 0;
 
-        if (demo){
-            Setup.setGridOn(false);
-            Hex.setSize(10);
-            Hex.setXMax(Setup.getScreenWidth() - 100);
-            Hex.setYMax(Setup.getScreenHeight() - 100);
-            GraphicsClass.setT(10);
-            Hex.setLikely(800);
-            Hex.setOften(10);
-            Hex.setDelay(90);
-            Hex.setOnTime(10);
-            Hex.setPassOn(3);
-
+        if (isDemo){
+            SetupDemo();
         } else {
-            Setup.askGridOn();
-            Setup.askSize();
-            Setup.askXMax();
-            Setup.askYMax();
-            Setup.askT();
-            Setup.askLikely();
-            Setup.askOften();
-            Setup.askDelay();
-            Setup.askOnTime();
-            Setup.askPassOn();    
+        	SetupLive();             
         }
-        //build grid
-        Grid = new Hex[Hex.getNumRows()][Hex.getRowLength()];
+        BuildGrid();
+    }
+    
+    public static void SetupDemo() {
+    	Setup.setGridOn(false);
+        Hex.setSize(10);
+        Hex.setXMax(Setup.getScreenWidth() - 100);
+        Hex.setYMax(Setup.getScreenHeight() - 100);
+        GraphicsClass.setT(10);
+        Hex.setLikely(800);
+        Hex.setOften(10);
+        Hex.setDelay(90);
+        Hex.setOnTime(10);
+        Hex.setPassOn(3);
+    }
+    
+    public static void SetupLive() {
+    	Setup.askGridOn();
+        Setup.askSize();
+        Setup.askXMax();
+        Setup.askYMax();
+        Setup.askT();
+        Setup.askLikely();
+        Setup.askOften();
+        Setup.askDelay();
+        Setup.askOnTime();
+        Setup.askPassOn();  
+    }
+    
+    public static void BuildGrid() {
+    	Grid = new Hex[Hex.getNumRows()][Hex.getRowLength()];
         for (int j = 0; j < Hex.getNumRows(); j++) {
             for (int i = 0; i < Hex.getRowLength(); i++) {
                 int x = (j * Hex.getColOffset()) + (i * (Hex.getWidth() + Hex.getSize()));
@@ -67,6 +77,7 @@ public class Setup
 
         }
         Setup.Grid[Hex.getNumRows() / 2][Hex.getRowLength() / 2].giveShim();
+    	
     }
 
     public static int getScreenWidth() {
